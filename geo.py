@@ -20,7 +20,6 @@ def draw_map():
     for lon,lat, no_available in zip(longitude,latitude, available_bikes):
         label = str(no_available)
         plt.annotate(label, (lon,lat))
-    # plt.show()
     mplleaflet.save_html(fileobj="static/map/map.html")
 
 
@@ -60,12 +59,10 @@ def get_status_by_id(id):
     return status
 
 
-
 def print_station_names():
     stations_response = get_stations()
     for station in stations_response:
         print(station["name"])
-
 
 
 def vis_ledige_for_stasjon(stasjon="all"):
@@ -82,8 +79,6 @@ def vis_ledige_for_stasjon(stasjon="all"):
             if station_name["name"].lower() == stasjon.lower():
                 print("Name:", station_name["name"], "ID:", station_id["station_id"])
                 print("Capacity:", station_name["capacity"], "Free:",station_id["num_bikes_available"], "\n")
-
-
 
 
 if __name__ == '__main__':
